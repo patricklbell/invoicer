@@ -1,0 +1,16 @@
+
+{{#if cac:PartyName.cbc:Name}} <strong>{{cac:PartyName.cbc:Name}}</strong><br /> {{/if}}
+
+{{#with cac:PostalAddress}}
+{{#if cbc:StreetName}} {{cbc:StreetName}}<br /> {{/if}}
+{{#if cbc:AdditionalStreetName}} {{cbc:AdditionalStreetName}}<br /> {{/if}}
+{{#if cbc:CityName}}
+  {{cbc:CityName}},
+  {{#if cbc:CountrySubentity}} {{cbc:CountrySubentity}} {{/if}}
+  {{#if cbc:PostalZone}} {{cbc:PostalZone}} {{/if}}
+  <br />
+{{/if}}
+{{#if cac:Country.cbc:IdentificationCode}} {{cac:Country.cbc:IdentificationCode}} <br /> {{/if}}
+{{/with}}
+
+{{#if cac:Contact.cbc:ElectronicMail}} Email: {{cac:Contact.cbc:ElectronicMail}} {{/if}}

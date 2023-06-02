@@ -1,0 +1,70 @@
+name: CI and CD
+
+# on: [push, pull_request]
+on: []
+
+jobs:
+  # This job will do a clean installation of node dependencies, cache/restore them, lint, and run tests across different versions of node
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Make sure tests aren't writing to database in parallel
+      max-parallel: 1
+      matrix:
+        node-version: [18.x, 16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+      - name: Testing
+        run: npm run coverage
+      - name: Build
+        run: npm run build
+
+  # If tests succeeded and we are on main then the repository will be deploy
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*' 'docs' 'frontend'
+      - name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          pattern: '[:\.]+'
+          string: '${{ steps.current-time.outputs.time }}'
+          replace-with: '-'
+          flags: 'g'
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: api-main # @todo fetch from .ebextensions/config.yml
+          environment_name: node-express-env # @todo fetch from .ebextensions/config.yml
+          version_label: 'version-label-${{ steps.format-time.outputs.replaced }}'
+          region: ap-southeast-2
+          deployment_package: deploy.zip

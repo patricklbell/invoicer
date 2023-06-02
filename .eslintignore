@@ -1,0 +1,7 @@
+node_modules
+static
+assets
+public
+resources
+test
+**.config.js

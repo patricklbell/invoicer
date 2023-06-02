@@ -1,0 +1,15 @@
+node_modules/
+build
+npm-debug.log
+.nyc
+.DS_Store
+.nyc_output/
+coverage/
+logs/
+public
+!frontend/public/
+.env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.yml

@@ -1,0 +1,13 @@
+<tr class='line'>
+  <td class='padx'>
+    <span class='pady'>
+      {{#with cac:Item}}
+        <strong>{{cbc:Name}}</strong><br />
+        {{cbc:Description}}
+      {{/with}}
+    </span>
+  </td>
+  <td class='text-center padx'>{{ cbc:InvoicedQuantity.[#text] }}</td>
+  <td class='text-center padx'>${{ cac:Price.cbc:PriceAmount.[#text] }}</td>
+  <td class='text-right padx'>${{ cbc:LineExtensionAmount.[#text] }}</td>
+</tr>
