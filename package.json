@@ -21,8 +21,8 @@
     "lint-fix": "npm run -s lint-fix:scripts && npm run -s lint-fix:styles",
     "lint-fix:scripts": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "lint-fix:styles": "stylelint \"**/*.{css,sass,scss,sss,less}\" --fix",
-    "postinstall:docs": "cd docs && npm install",
-    "postinstall:frontend": "cd frontend && npm install",
+    "postinstall:docs": "cd docs && npm install --include=dev",
+    "postinstall:frontend": "cd frontend && npm install --include=dev",
     "postinstall": "npm run postinstall:docs && npm run postinstall:frontend"
   },
   "imports": {
