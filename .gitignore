@@ -8,7 +8,7 @@ coverage/
 logs/
 public
 !frontend/public/
-.env
+/.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

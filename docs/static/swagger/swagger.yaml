@@ -8,7 +8,7 @@ info:
   version: 1.0.1
 externalDocs:
   description: Documentation with quick start guides
-  url: https://verbose-spork-m5w6r2o.pages.github.io/
+  url: /docs
 tags:
   - name: invoice
     description: CRUD Operations on individual invoices
@@ -19,7 +19,7 @@ tags:
   - name: users
     description: Operations across multiple users
 servers:
-  - url: http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com
+  - url: http://<deployment-url>
     description: Production server (uses live data and can be viewed on frontend)
 paths:
   /invoice:

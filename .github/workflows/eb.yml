@@ -6,6 +6,7 @@ on: []
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
   PROD_DATABASE_NAME: 'prodDB'
+  TEST_DATABASE_NAME: 'testDB'
   JWT_SECRET: ${{ secrets.JWT_SECRET }}
   JWT_EXPIRES: '1h'
   SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}

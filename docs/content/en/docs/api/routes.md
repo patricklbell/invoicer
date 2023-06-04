@@ -1030,7 +1030,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/user/signup',
+fetch('<deployment-url>/user/signup',
 {
   method: 'POST',
   body: inputBody,
@@ -1129,7 +1129,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/user/login',
+fetch('<deployment-url>/user/login',
 {
   method: 'POST',
   body: inputBody,
@@ -1222,7 +1222,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/user/{id}',
+fetch('<deployment-url>/user/{id}',
 {
   method: 'GET',
 
@@ -1325,7 +1325,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/user/{id}',
+fetch('<deployment-url>/user/{id}',
 {
   method: 'PATCH',
   body: inputBody,
@@ -1429,7 +1429,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/user/{id}',
+fetch('<deployment-url>/user/{id}',
 {
   method: 'DELETE',
 
@@ -1520,7 +1520,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('http://node-express-env.eba-9atmj7qr.ap-southeast-2.elasticbeanstalk.com/users/search',
+fetch('<deployment-url>/users/search',
 {
   method: 'GET',
 

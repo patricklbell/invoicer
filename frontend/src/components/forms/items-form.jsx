@@ -81,68 +81,63 @@ const ItemsForm = ({ className = '', items = [], setItems }) => {
         {(showExtra
           ? [...(data?.items ?? []), { id: data?.rowId }]
           : data?.items ?? []
-        ).map(
-          (item, index) =>
-            console.log(index, item) || (
-              <tr key={item?.id}>
-                <td className="p-0 border border-neutral">
-                  <input
-                    className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
-                    onInput={handleChange(index)}
-                    value={item?.name}
-                    placeholder="Name"
-                    id={`${id}-${index}-name`}
-                    name="name"
-                  />
-                </td>
-                <td className="p-0 border border-neutral">
-                  <input
-                    className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
-                    onInput={handleChange(index)}
-                    value={item?.description}
-                    placeholder="Description"
-                    id={`${id}-${index}-description`}
-                    name="description"
-                  />
-                </td>
-                <td className="p-0 border border-neutral">
-                  <input
-                    className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
-                    onInput={handleChange(index)}
-                    value={item?.qty}
-                    onKeyPress={numberOnKeyPress}
-                    placeholder="Qty"
-                    id={`${id}-${index}-qty`}
-                    name="qty"
-                  />
-                </td>
-                <td className="p-0 border border-neutral">
-                  <input
-                    className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
-                    onInput={handleChange(index)}
-                    value={item?.price}
-                    onKeyPress={numberOnKeyPress}
-                    placeholder="Price"
-                    id={`${id}-${index}-price`}
-                    name="price"
-                  />
-                </td>
-                <td className="p-0 border border-neutral">
-                  <input
-                    className="p-4 w-full outline-none disabled:bg-background-50 text-right"
-                    disabled
-                    value={
-                      item?.amount
-                        ? '$' + parseFloat(item?.amount).toFixed(2)
-                        : ''
-                    }
-                    placeholder="Amount"
-                    id={`${id}-${index}-amount`}
-                  />
-                </td>
-              </tr>
-            )
-        )}
+        ).map((item, index) => (
+          <tr key={item?.id}>
+            <td className="p-0 border border-neutral">
+              <input
+                className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
+                onInput={handleChange(index)}
+                value={item?.name}
+                placeholder="Name"
+                id={`${id}-${index}-name`}
+                name="name"
+              />
+            </td>
+            <td className="p-0 border border-neutral">
+              <input
+                className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
+                onInput={handleChange(index)}
+                value={item?.description}
+                placeholder="Description"
+                id={`${id}-${index}-description`}
+                name="description"
+              />
+            </td>
+            <td className="p-0 border border-neutral">
+              <input
+                className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
+                onInput={handleChange(index)}
+                value={item?.qty}
+                onKeyPress={numberOnKeyPress}
+                placeholder="Qty"
+                id={`${id}-${index}-qty`}
+                name="qty"
+              />
+            </td>
+            <td className="p-0 border border-neutral">
+              <input
+                className="bg-background p-4 w-full ring-neutral focus-within:ring-1 focus-within:ring-primary"
+                onInput={handleChange(index)}
+                value={item?.price}
+                onKeyPress={numberOnKeyPress}
+                placeholder="Price"
+                id={`${id}-${index}-price`}
+                name="price"
+              />
+            </td>
+            <td className="p-0 border border-neutral">
+              <input
+                className="p-4 w-full outline-none disabled:bg-background-50 text-right"
+                disabled
+                value={
+                  item?.amount ? '$' + parseFloat(item?.amount).toFixed(2) : ''
+                }
+                placeholder="Amount"
+                id={`${id}-${index}-amount`}
+              />
+            </td>
+          </tr>
+        ))}
         <tr key="totalrow">
           <td></td>
           <td></td>
