@@ -53,3 +53,11 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        env:
+          HD_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          HD_PROD_DATABASE_NAME: 'prodDB'
+          HD_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          HD_JWT_EXPIRES: '1h'
+          HD_SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          HD_SENDGRID_SENDER: 'patricklachlanbell@gmail.com'
+          HD_REDIRECT_RULS: '/docs'
