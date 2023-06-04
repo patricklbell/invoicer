@@ -2,6 +2,15 @@ name: CI and CD
 
 on: [push, pull_request]
 
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  PROD_DATABASE_NAME: 'prodDB'
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  JWT_EXPIRES: '1h'
+  SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+  SENDGRID_SENDER: 'patricklachlanbell@gmail.com'
+  REDIRECT_RULS: '/docs'
+
 jobs:
   # This job will do a clean installation of node dependencies, cache/restore them, lint, and run tests across different versions of node
   test:
@@ -44,11 +53,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PROD_DATABASE_NAME: 'prodDB'
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          JWT_EXPIRES: '1h'
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-          SENDGRID_SENDER: 'patricklachlanbell@gmail.com'
-          REDIRECT_RULS: '/docs'
