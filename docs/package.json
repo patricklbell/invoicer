@@ -20,7 +20,7 @@
     "clean": "shx rm -rf public resources",
     "server": "exec-bin node_modules/.bin/hugo/hugo server",
     "copy:katex-fonts": "shx cp ./node_modules/katex/dist/fonts/* ./static/fonts/",
-    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
+    "postinstall": "shx ls && hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
   },
   "devDependencies": {
     "@babel/cli": "^7.18",
