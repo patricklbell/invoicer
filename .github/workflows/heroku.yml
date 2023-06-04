@@ -1,6 +1,6 @@
 name: CI and CD
 
-on: [] # @todo
+on: [push, pull_request]
 
 jobs:
   # This job will do a clean installation of node dependencies, cache/restore them, lint, and run tests across different versions of node
@@ -38,32 +38,17 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*' 'docs' 'frontend'
-      - name: Get timestamp
-        uses: gerred/actions/current-time@master
-        id: current-time
-      - name: Run string replace
-        uses: frabert/replace-string-action@master
-        id: format-time
-        with:
-          pattern: '[:\.]+'
-          string: '${{ steps.current-time.outputs.time }}'
-          replace-with: '-'
-          flags: 'g'
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v21
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: api-main # @todo fetch from .ebextensions/config.yml
-          environment_name: node-express-env # @todo fetch from .ebextensions/config.yml
-          version_label: 'version-label-${{ steps.format-time.outputs.replaced }}'
-          region: ap-southeast-2
-          deployment_package: deploy.zip
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PROD_DATABASE_NAME: 'prodDB'
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_EXPIRES: '1h'
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_SENDER: 'patricklachlanbell@gmail.com'
+          REDIRECT_RULS: '/docs'
