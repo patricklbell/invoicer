@@ -18,14 +18,14 @@ const ToggleDark = ({ className }) => {
   };
 
   return (
-    <button onClick={toggleDarkMode}>
+    <button onClick={toggleDarkMode} className="group">
       <LightModeIcon
-        className={classnames('block dark:hidden', {
+        className={classnames('block dark:hidden group-hover:animate-pulse', {
           [className]: className
         })}
       />
       <DarkModeIcon
-        className={classnames('hidden dark:block', {
+        className={classnames('hidden dark:block group-hover:animate-pulse', {
           [className]: className
         })}
       />

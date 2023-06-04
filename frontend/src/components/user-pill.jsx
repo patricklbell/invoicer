@@ -44,7 +44,10 @@ const UserPill = ({
         </span>
       )}
       {closeable && (
-        <CloseIcon className="w-4 h-4 hover:cursor-pointer" onClick={onClose} />
+        <CloseIcon
+          className="w-4 h-4 hover:cursor-pointer fill-foreground-100 hover:fill-foreground"
+          onClick={onClose}
+        />
       )}
     </Pill>
   );

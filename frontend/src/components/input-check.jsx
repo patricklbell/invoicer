@@ -19,10 +19,13 @@ const InputCheck = ({ value, setValue, className }) => {
       <span className="w-8 h-8 -top-2 -left-1 absolute rounded-full group-hover:bg-background-100"></span>
 
       <CheckIcon
-        className={classnames('w-7 h-7 -top-1 absolute fill-foreground', {
-          'invisible group-hover:visible': !value,
-          visible: value
-        })}
+        className={classnames(
+          'w-7 h-7 -top-1 absolute stroke-foreground fill-foreground',
+          {
+            'invisible group-hover:visible': !value,
+            visible: value
+          }
+        )}
       ></CheckIcon>
     </span>
   );

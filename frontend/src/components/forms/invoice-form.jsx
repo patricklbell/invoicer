@@ -132,7 +132,7 @@ const InvoiceForm = ({
               />
             </div>
 
-            <div className="w-full flex my-8 flex-row mx-auto">
+            <div className="w-full flex mt-8 flex-row mx-auto">
               <div className="flex flex-col w-2/5 gap-4">
                 <span className="block w-full text-center text-foreground/50">
                   Supplier
@@ -166,22 +166,9 @@ const InvoiceForm = ({
                     formnovalidate="formnovalidate"
                   />
                 </ErrorTooltip>
-                <ErrorTooltip
-                  error={errors?.supplierAddress}
-                  show={isSubmitting || touched?.supplierAddress}
-                >
-                  <AddressForm
-                    title="Supplier Address"
-                    className="border-dashed mt-5"
-                    setAddress={(v) => setFieldValue('supplierAddress', v)}
-                    address={values?.supplierAddress}
-                  />
-                </ErrorTooltip>
               </div>
 
-              <div className="text-xl px-5 flex flex-grow items-center">
-                <EastIcon className="h-[1.5rem] m-auto stroke-foreground-100"></EastIcon>
-              </div>
+              <div className="w-1/5" />
 
               <div className="flex flex-col w-2/5 gap-4">
                 <span className="block w-full text-center text-foreground/50">
@@ -217,24 +204,45 @@ const InvoiceForm = ({
                   />
                 </ErrorTooltip>
 
-                {values?.recipientEmail && (
-                  <div
-                    className={classnames(
-                      'flex flex-row mx-auto my-1 gap-3 items-center',
-                      {
-                        'text-foreground': values?.emailRecipient,
-                        'text-foreground-100': !values?.emailRecipient
-                      }
-                    )}
-                  >
-                    {creating ? 'Email recipient?' : 'Email recipient updates?'}
-                    <InputCheck
-                      value={values?.emailRecipient}
-                      setValue={(v) => setFieldValue('emailRecipient', v)}
-                    />
-                  </div>
-                )}
+                <div
+                  className={classnames(
+                    'flex flex-row mx-auto my-1 gap-3 items-center',
+                    {
+                      'text-foreground': values?.emailRecipient,
+                      'text-foreground-100': !values?.emailRecipient,
+                      invisible: !values?.recipientEmail
+                    }
+                  )}
+                >
+                  {creating ? 'Email recipient?' : 'Email recipient updates?'}
+                  <InputCheck
+                    value={values?.emailRecipient}
+                    setValue={(v) => setFieldValue('emailRecipient', v)}
+                  />
+                </div>
+              </div>
+            </div>
 
+            <div className="w-full flex mb-12 flex-row mx-auto">
+              <div className="flex flex-col w-2/5 gap-4">
+                <ErrorTooltip
+                  error={errors?.supplierAddress}
+                  show={isSubmitting || touched?.supplierAddress}
+                >
+                  <AddressForm
+                    title="Supplier Address"
+                    className="border-dashed mt-5"
+                    setAddress={(v) => setFieldValue('supplierAddress', v)}
+                    address={values?.supplierAddress}
+                  />
+                </ErrorTooltip>
+              </div>
+
+              <div className="text-xl px-5 flex flex-grow items-center">
+                <EastIcon className="h-[1.5rem] m-auto stroke-foreground-100"></EastIcon>
+              </div>
+
+              <div className="flex flex-col w-2/5 gap-4">
                 <ErrorTooltip
                   error={errors?.recipientAddress}
                   show={isSubmitting || touched?.recipientAddress}

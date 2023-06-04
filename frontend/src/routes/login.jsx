@@ -148,7 +148,7 @@ const Login = () => {
           duration: 110,
           reverseStack: false
         }}
-        className="motion-reduce:invisible hidden md:block stroke-primary stroke-[0.5px] scale-x-[-1] mix-blend-difference absolute pointer-events-none top-[10%] -left-14 w-[175%] h-80 md:h-128 lg:top-auto lg:left-auto lg:right-0 lg:bottom-2 lg:w-full lg:h-[75%] lg:max-h-[720px]"
+        className="motion-reduce:invisible hidden md:block stroke-secondary opacity-60 dark:opacity-20 stroke-[1px] scale-x-[-1] absolute pointer-events-none top-[10%] -left-14 w-[175%] h-80 md:h-128 lg:top-auto lg:left-auto lg:right-0 lg:bottom-2 lg:w-full lg:h-[75%] lg:max-h-[720px]"
       />
     </>
   );

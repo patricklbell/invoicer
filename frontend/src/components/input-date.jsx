@@ -93,7 +93,7 @@ const InputDate = ({
             <Popover.Panel>
               <div
                 className={classnames(
-                  'block p-4 border border-neutral rounded fill-foreground text-foreground',
+                  'block p-4 border border-neutral rounded fill-foreground stroke-foreground text-foreground',
                   { [popoverClassName]: popoverClassName }
                 )}
               >

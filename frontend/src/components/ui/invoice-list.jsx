@@ -156,7 +156,7 @@ const InvoiceList = ({
           <tr
             key={invoice?._id || index}
             className={classnames(
-              'transition-all ease-in border-primary duration-100 text-md',
+              'transition-all ease-in border-primary duration-100 text-md rounded',
               {
                 'hover:bg-primary-100/[0.15] hover:cursor-pointer ': selectable,
                 'bg-primary-100/10': selection.includes(invoice._id),
@@ -201,12 +201,12 @@ const InvoiceList = ({
                   </div>
                 )}
                 <div className="flex-grow flex flex-col justify-start">
-                  <div className=" flex flex-row items-center pl-1">
+                  <div className="align-center pl-1">
                     {!invoice.editIds.includes(user?._id) ? (
-                      <div className="hidden md:block">
-                        <Pill className="mb-1 pr-3 flex flex-row align-middle items-center">
-                          <LockIcon className="inline w-4 py-1 mr-2" />
-                          <span>View Only</span>
+                      <div className="hidden md:inline-block">
+                        <Pill className="mb-1 pr-3 inline-flex flex-row align-middle items-center">
+                          <LockIcon className="inline w-4 py-2 -m-1 mr-2" />
+                          <span className="font-bold">View Only</span>
                         </Pill>
                       </div>
                     ) : (

@@ -11,7 +11,7 @@ import { ReactComponent as LogoIcon } from 'assets/logo.svg';
 
 import useUser from 'hooks/use-user';
 
-const App = (props) => {
+const Root = (props) => {
   const nav = useNavigate();
   const loc = useLocation();
   const { isLoading, loggedOut, user } = useUser();
@@ -25,8 +25,8 @@ const App = (props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="flex relative bg-background md:shadow-md shadow-neutral dark:border-b border-neutral items-center">
-        <Link to="/" className="absolute left-5 ">
-          <LogoIcon className="hover:fill-primary-100 hover:cursor-pointer" />
+        <Link to="/" className="pl-5 lg:pl-0 lg:absolute left-5 ">
+          <LogoIcon className="fill-foreground stroke-foreground hover:stroke-primary-100 hover:fill-primary-100 hover:cursor-pointer" />
         </Link>
         <div className="flex-auto flex justify-start items-center py-6">
           <SearchBar />
@@ -73,4 +73,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default Root;

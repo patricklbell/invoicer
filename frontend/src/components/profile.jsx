@@ -30,7 +30,7 @@ const Profile = () => {
         <ToggleDark className="w-8 h-8" />
         <Link {...makeLink(loc, '/settings')} className="flex items-center">
           <Popover.Button>
-            <SettingsIcon className="w-8 stroke-foreground-100 hover:animate-[spin_4s_linear_infinite] duration-700 hover:cursor-pointer" />
+            <SettingsIcon className="w-8 stroke-foreground fill-foreground hover:animate-[spin_4s_linear_infinite] duration-700 hover:cursor-pointer" />
           </Popover.Button>
         </Link>
       </div>

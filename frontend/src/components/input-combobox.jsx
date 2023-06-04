@@ -83,7 +83,7 @@ const InputCombobox = ({
                   }
                   value={option}
                 >
-                  {({ selected, active }) => (
+                  {({ selected }) => (
                     <>
                       <span
                         className={classnames('block truncate', {
@@ -94,14 +94,7 @@ const InputCombobox = ({
                         {option}
                       </span>
                       {selected ? (
-                        <span
-                          className={classnames(
-                            'absolute inset-y-0 left-0 flex items-center pl-3 fill-foreground',
-                            {
-                              'fill-foreground': active
-                            }
-                          )}
-                        >
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 stroke-foreground fill-foreground">
                           <Check className="h-5 w-5" aria-hidden="true" />
                         </span>
                       ) : null}

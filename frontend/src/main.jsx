@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import './main.css';
 
 import ErrorPage from 'routes/error-page';
-import App from 'routes/app';
+import Root from 'routes/root';
 import Home from 'routes/home';
 import React from 'react';
 import Login from 'routes/login';
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <App />,
+    element: <Root />,
     children: [
       {
         path: 'dashboard',

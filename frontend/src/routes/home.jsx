@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <>
       <header className="sticky top-0 border-b-2 -mb-2 border-neutral z-[9999] bg-background">
-        <div className="flex flex-row justify-between items-baseline py-2">
+        <div className="flex flex-row justify-between align-middle py-3">
           <div className="flex flex-row justify-center items-center gap-5 px-5">
             <LogoIcon />
             <div className="hidden lg:inline-block font-bold text-3xl align-middle pl-0 pr-4">
@@ -158,15 +158,17 @@ const Home = () => {
               duration: 180,
               reverseStack: false
             }}
-            className="absolute stroke-foreground-100 opacity-40 stroke-[2px] dark:stroke-[0.2px] mix-blend-difference 
+            className="absolute fill-foreground-100 stroke-foreground-100 opacity-60 dark:opacity-20 stroke-[1px] mix-blend-difference 
                       top-40 left-0 w-[125%] h-80 md:h-128 lg:w-[105%] lg:h-[75%] lg:max-h-[720px]"
           />
 
-          <div className="absolute transition-colors bottom-20 w-full z-10 text-foreground-100 fill-foreground-100 hover:text-foreground hover:fill-foreground">
+          <div className="absolute transition-colors bottom-20 w-full z-10 group">
             <Link to="#features" onClick={() => scrollToSection('features')}>
-              <div className="text-center text-lg mb-2">Features</div>
+              <div className="text-center text-lg mb-2 text-foreground-100 group-hover:text-foreground">
+                Features
+              </div>
               <div className="animate-bounce">
-                <ChevronRightIcon className="mx-auto rotate-90" />
+                <ChevronRightIcon className="mx-auto rotate-90 fill-foreground-100 stroke-foreground-100 group-hover:fill-foreground group-hover:stroke-foreground" />
               </div>
             </Link>
           </div>

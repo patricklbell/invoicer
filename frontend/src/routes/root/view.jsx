@@ -14,6 +14,7 @@ import GoBack from 'components/go-back';
 import Avatar from 'components/avatar';
 import UserPill from 'components/user-pill';
 import Pill from 'components/pill';
+
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as ShareIcon } from 'assets/share.svg';
 import { ReactComponent as PrintIcon } from 'assets/print.svg';
